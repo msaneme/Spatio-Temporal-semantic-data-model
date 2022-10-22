@@ -1,0 +1,116 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://afarcloud.com/StateVectorSchema.json",
+    "type": "object",
+    "description": "StateVector, position and battery: periodic information about vehicle state.",
+    "default": {},
+    "required": [
+        "vehicleId",
+		"sequenceNumber",
+        "lastUpdate"
+    ],
+    "additionalProperties": true,
+    "properties": {
+        "vehicleId": {
+            "$id": "#/properties/vehicleId",
+            "type": "integer",
+            "description": "Vehicle identifier."
+        },
+        "sequenceNumber": {
+            "$id": "#/properties/sequenceNumber",
+            "type": "integer",
+            "description": "Sequence number."
+        },
+		
+        "location": {
+            "$id": "#/properties/location",
+			"$ref":"#/definitions/location"
+        },
+        "orientation": {
+            "$id": "#/properties/orientation",
+			"$ref":"#/definitions/orientation"
+        },
+        "battery": {
+            "$id": "#/properties/battery",
+			"$ref":"#/definitions/battery"
+        },
+        "linearSpeed": {
+            "$id": "#/properties/linearSpeed",
+            "type": "integer",
+            "description": "Vehicle linear speed."
+        },
+        "lastUpdate": {
+            "$id": "#/properties/lastUpdate",
+            "type": "integer",
+            "description": "Last update (epoch time in seconds)."
+        }
+    },
+	
+	"definitions":{
+      "location": {
+            "type": "object",
+            "required": [
+                "latitude",
+                "longitude"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "latitude": {
+                    "type": "number",
+                    "description": "Latitude."
+                },
+                "longitude": {
+                    "type": "number",
+                    "description": "Longitude."
+                },
+                "altitude": {
+                    "type": "number",
+                    "description": "Altitude."
+                }
+            }
+        },	
+        "orientation": {
+            "type": "object",
+            "description": "Euler angles: intrinsic rotations.",
+            "required": [
+                "roll",
+                "pitch",
+                "yaw"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "roll": {
+                    "type": "number",
+                    "description": "Roll rotation: gives the bank angle."
+                },
+                "pitch": {
+                    "type": "number",
+                    "description": "Pitch rotation: gives the elevation angle."
+                },
+                "yaw": {
+                    "type": "number",
+                    "description": "Yaw rotation: gives the bearing angle."
+                }
+            }
+        },		
+		"battery": {
+            "type": "object",
+            "description": "Battery information.",
+            "required": [
+                "batteryCapacity",
+                "batteryPercentage"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "batteryCapacity": {
+                    "type": "number",
+                    "description": "Capacity in Ah (last full capcity)."
+                },
+                "batteryPercentage": {
+                    "type": "number",
+                    "description": "Charge percentage on 0 to 1 range."
+                }
+            }
+        }
+	}
+}
