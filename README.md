@@ -1,1 +1,1 @@
-# Spatio-Temporal-Semantic-data-model
+# Spatio-Temporal-Semantic Data Model
