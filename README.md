@@ -1,1 +1,1 @@
-# Spatio-Temporal-Semantic Data Model
+# Spatio-Temporal-Semantic Data Model for Precision Agriculture
